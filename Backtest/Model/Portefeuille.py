@@ -1,11 +1,11 @@
 class Portefeuille:
 
     def __init__(self,btcVol=0,eurVol=100):
-        self._currency = 'BTC-EUR'
-        self._BtcVol = btcVol
-        self._EurVol = eurVol
-        self._pendingBtcVol = btcVol
-        self._pendingEurVol = eurVol
+        self.currency = 'BTC-EUR'
+        self.BtcVol = btcVol
+        self.EurVol = eurVol
+        self.pendingBtcVol = btcVol
+        self.pendingEurVol = eurVol
 
     def change_btc_amount(self,amount,isorder):
         if not isorder:
@@ -19,7 +19,3 @@ class Portefeuille:
         else:
             self._pendingEurVol += amount
 
-    def _get_currency(self):
-        return self._currency
-
-    currency = property(_get_currency())
