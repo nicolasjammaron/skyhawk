@@ -12,7 +12,7 @@ tmp = temps2
 
 list_orderbooks = []
 
-while (temps2-temps < 30):
+while (temps2-temps < 60):
     book1 = publicClient.getProductOrderBook()
     orderbook = OrderBookPersonnalised(book1,temps2-tmp)
     list_orderbooks.append(orderbook)
@@ -24,6 +24,7 @@ print(temps2-temps)
 with open("orderbook.txt",mode='wb') as file:
     pickler = pickle.Pickler(file=file)
     pickler.dump(list_orderbooks)
+
 
 
 
