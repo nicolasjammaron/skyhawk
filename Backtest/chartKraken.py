@@ -2,7 +2,6 @@ import krakenex
 from matplotlib import pyplot as plt
 import numpy as np
 
-
 k = krakenex.API()
 
 ohlc = k.query_public("OHLC",{'pair':"XBTCZEUR",'interval':5,'since':1496082468000})
@@ -38,12 +37,18 @@ def ema(length,prices):
         emaY[i] = emaY[length]
     return emaY
 
+def macd(ema1,ema2,sline, prices):
+    macdY = np.zeros(len(prices))
+    Ema1 = ema(ema1, prices)
+    Ema2 = ema(ema2, prices)
+    macdY = Ema2 - Ema1
+    signalline = ema(sline, macdY)
+    return macdY - signalline
 
 ema5 = ema(5,tabClose)
 ema8 = ema(8,tabClose)
-print(tabClose)
-
+print(ema5)
 plt.plot(tabTime,tabClose,tabTime,ema5,tabTime,ema8)
-plt.axis([1496126400,1496341800,1900,2200])
+plt.axis([1496469300,1496684700,2150,2350])
 
 plt.show()
