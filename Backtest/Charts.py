@@ -1,6 +1,7 @@
 import json
 import matplotlib.pyplot as plot
 import numpy as np
+import krakenex
 
 with open("5days5min.json",'r') as file:
     listPrices = json.load(file)
