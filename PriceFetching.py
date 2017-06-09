@@ -15,13 +15,15 @@ tempsDebut = time.time()
 
 def update_chart():
     print("new minute")
-    listPrices = k.query_public("OHLC", {'since':time.time()-60, 'pair': 'XXBTZEUR', 'interval': 1})
+    listPrices = k.query_public("OHLC", {'since':tempsDebut, 'pair': 'XXBTZEUR', 'interval': 1})
+    print(listPrices)
     prices.append(listPrices['result']['XXBTZEUR'][0][4])
     xtime.append(xtime[len(xtime)-1]+1)
     print(prices)
     s.enter(60,1,update_chart)
 
-listPrices = k.query_public("OHLC", {'since':time.time()-60, 'pair': 'XXBTZEUR', 'interval': 1})
+listPrices = k.query_public("OHLC", {'since':time.time()-59, 'pair': 'XXBTZEUR', 'interval': 1})
+print(listPrices)
 prices.append(listPrices['result']['XXBTZEUR'][0][4])
 xtime.append(0)
 print(prices)
